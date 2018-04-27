@@ -18,23 +18,11 @@
         escapeshellarg($script). ' ' .
         escapeshellarg($temp_file_name);
     
-    $ret_val = 0;
-    
     // Execute the command, store terminal output in the $printed_output variable
-    exec($command, $printed_output, $ret_val);
-    
-    //if $ret_val is not 0 or if the log file wasn't created, there was a problem
-    if($ret_val != 0){
-        #print problems
-        header('HTTP/1.1 400 Bad Request');
-        if (ob_get_contents()) ob_end_clean();
-        flush();
-    }
+    exec($command, $printed_output);
 
     // If it did work, download a text file using the output stored in the $printed_output variable
-    else{
-        foreach ($printed_output as $line)
-        {
-            print $line;
-        }
+    foreach ($printed_output as $line)
+    {
+        print $line;
     }
