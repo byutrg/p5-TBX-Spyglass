@@ -24,7 +24,7 @@ sub main
     );
     
     die "File does not appear to be valid XML.\n" unless $twig->safe_parsefile($_[0]);
-    print "File appears to be valid XML, but does not appear to be TBX." if $isTBX != 0;
+    print "File appears to be valid XML, but does not appear to be TBX." if $isTBX == 0;
 }
 
 die "Missing target file.\n" if (@ARGV < 2);
