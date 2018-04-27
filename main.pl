@@ -3,8 +3,6 @@ use warnings;
 
 use XML::Twig;
 
-my $return_instructions = "\n\nGo back in browser to return to TBX Spyglass utility.\n";
-
 sub main
 {
     #THIS LINE DOES NOT WORK ON THE SERVER    
@@ -14,16 +12,16 @@ sub main
         twig_handlers =>
         {
             tbx => sub {
-                    printf "File appears to be a 2018 TBX file with dialect: '%s'$return_instructions", $_->att('type');
+                    printf "File appears to be a 2018 TBX file with dialect: '%s'", $_->att('type');
                 },
             martif => sub {
-                printf "File appears to be a 2008 TBX file.$return_instructions"
+                printf "File appears to be a 2008 TBX file."
             }
         }
     );
     
-    die "File does not appear to be valid XML.\n$return_instructions" unless $twig->safe_parsefile($_[0]);
+    die "File does not appear to be valid XML.\n" unless $twig->safe_parsefile($_[0]);
 }
 
-die "Missing target file.\n$return_instructions" if (@ARGV < 2);
+die "Missing target file.\n" if (@ARGV < 2);
 main($ARGV[0]);

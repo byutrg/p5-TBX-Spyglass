@@ -40,6 +40,9 @@
     else{
         foreach ($printed_output as $line)
         {
-            print $line;
+            print "<p>$line</p>";
         }
+        
+        print "<br/>";
+        print "<p>Go back in browser to return to TBX Spyglass utility.</p>";
     }
