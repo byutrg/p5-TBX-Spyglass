@@ -5,7 +5,8 @@ use XML::Twig;
 
 sub main
 {
-    die "File does not have a '.tbx' extension.\n" if $_[0] !~ /\.tbx$/;
+    #THIS LINE DOES NOT WORK ON THE SERVER    
+    #die "File does not have a '.tbx' extension.\n" if $_[0] !~ /\.tbx$/;
     
     my $twig = XML::Twig->new(
         twig_handlers =>
