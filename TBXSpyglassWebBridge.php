@@ -14,13 +14,10 @@
     $perl = "~/.plenv/versions/5.18.0/bin/perl";
     $lib = "~/perl5/lib/perl5";
     $script = "./main.pl";
-    
-    $reroute_stderr = "2>$out_file_name";
         
     $command = "$perl ". "-I $lib " . 
         escapeshellarg($script). ' ' .
-        escapeshellarg($temp_file_name) . ' -s ' . 
-            $reroute_stderr;
+        escapeshellarg($temp_file_name);
     
     $ret_val = 0;
     
