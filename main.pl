@@ -5,7 +5,7 @@ use XML::Twig;
 
 sub main
 {
-    print "File does not have a '.tbx' extension." if $_[0] !~ /\.tbx$/;
+    die "File does not have a '.tbx' extension.\n" if $_[0] !~ /\.tbx$/;
     
     my $twig = XML::Twig->new(
         twig_handlers =>
@@ -19,8 +19,8 @@ sub main
         }
     );
     
-    print "File does not appear to be valid XML." unless $twig->safe_parsefile($_[0]);
+    die "File does not appear to be valid XML." unless $twig->safe_parsefile($_[0]);
 }
 
-die "Missing target file." if (@ARGV != 1);
+die "Missing target file.\n" if (@ARGV != 1);
 main($ARGV[0]);
