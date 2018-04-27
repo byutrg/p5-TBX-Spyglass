@@ -38,5 +38,8 @@
 
     // If it did work, download a text file using the output stored in the $printed_output variable
     else{
-        print $printed_output;
+        foreach ($printed_output as $line)
+        {
+            print $line;
+        }
     }
