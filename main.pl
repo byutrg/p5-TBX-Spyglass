@@ -20,7 +20,7 @@ sub main
         }
     );
     
-    die "File does not appear to be valid XML." unless $twig->safe_parsefile($_[0]);
+    die "File does not appear to be valid XML.\n" unless $twig->safe_parsefile($_[0]);
 }
 
 die "Missing target file.\n" if (@ARGV < 2);
