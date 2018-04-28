@@ -26,6 +26,9 @@
 
     // Execute the command, store terminal output in the $printed_output variable
     exec($command, $printed_output, $ret_val);
+    
+    $error = 0;
+    $image = "x_red.png";
 
     //if $ret_val is not 0 or if the log file wasn't created, there was a problem
     if(($ret_val != 0) || (!file_exists($out_file_name)) ){
@@ -33,15 +36,50 @@
         header('HTTP/1.1 400 Bad Request');
         if (ob_get_contents()) ob_end_clean();
         flush();
-        readfile($out_file_name);
+        $error = 1;
     }
 
     // If it did work, download a text file using the output stored in the $printed_output variable
     else{
-        foreach ($printed_output as $line)
+        if preg_match("2018 TBX", $printed_output[0])
         {
-            print "<p>$line</p>";
-        }    
+            $image = "check_green.png";
+        }
+        else if preg_match("2008 TBX", $printed_output[0])
+        {
+            $image = "check_yellow.png";
+        }
     }
-    print "<br/>";
-    print "<p>Go back in browser to return to TBX Spyglass utility.</p>";
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>TBX Spyglass Results</title>
+    
+    <link rel="stylesheet" href="./TBXSpyglassWebBridge.css">
+</head>
+
+<body>
+    <div class="header">
+        <span>Go back in browser to return to TBX Spyglass utility.</span>
+    </div>
+    <h1 class="title">TBX Spyglass Results</h1>
+    <div class="container">
+        <img class="results_image" src="<? $image ?>"/>
+        <p><? 
+            if ($error)
+            {
+                readfile($out_file_name);
+            }
+            else
+            {
+                print $printed_output[0];   
+            }
+            ?></p>
+    </div>
+</body>
+</html>
