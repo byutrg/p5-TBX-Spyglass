@@ -50,7 +50,7 @@
             $image = "check_yellow.png";
         }
     }
-
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +69,7 @@
     </div>
     <h1 class="title">TBX Spyglass Results</h1>
     <div class="container">
-        <img class="results_image" src=<? echo '"'.$image.'"'; ?>/>
+        <img class="results_image" src="<? $image ?>"/>
         <p><? 
             if ($error)
             {
