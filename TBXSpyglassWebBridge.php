@@ -41,11 +41,11 @@
 
     // If it did work, download a text file using the output stored in the $printed_output variable
     else{
-        if preg_match("2018 TBX", $printed_output[0])
+        if (preg_match("2018 TBX", $printed_output[0]))
         {
             $image = "check_green.png";
         }
-        else if preg_match("2008 TBX", $printed_output[0])
+        else if (preg_match("2008 TBX", $printed_output[0]))
         {
             $image = "check_yellow.png";
         }
@@ -69,7 +69,7 @@
     </div>
     <h1 class="title">TBX Spyglass Results</h1>
     <div class="container">
-        <img class="results_image" src="<? $image ?>"/>
+        <img class="results_image" src=<? echo '"'.$image.'"'; ?>/>
         <p><? 
             if ($error)
             {
