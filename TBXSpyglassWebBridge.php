@@ -69,7 +69,7 @@
     </div>
     <h1 class="title">TBX Spyglass Results</h1>
     <div class="container">
-        <img class="results_image" src="<? $image ?>"/>
+        <img class="results_image" src="<? echo $image ?>"/>
         <p><? 
             if ($error)
             {
