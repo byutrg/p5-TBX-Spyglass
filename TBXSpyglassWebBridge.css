@@ -30,6 +30,7 @@ body {
 
 .validation_notice {
     margin: 0 auto;
+    width: 275px;
 }
 
 .title {
