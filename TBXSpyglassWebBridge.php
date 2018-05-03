@@ -68,6 +68,7 @@
         <span>Go back in browser to return to TBX Spyglass utility.</span>
     </div>
     <h1 class="title">TBX Spyglass Results</h1>
+    <p>This app does *not* validate TBX files.</p>
     <div class="container">
         <img class="results_image" src="<? echo $image ?>"/>
         <p><? 
