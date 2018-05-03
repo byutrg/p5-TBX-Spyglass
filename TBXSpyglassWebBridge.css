@@ -28,7 +28,7 @@ body {
     margin: 0;
 }
 
-body p {
+.validation_notice {
     margin: 0 auto;
 }
 
