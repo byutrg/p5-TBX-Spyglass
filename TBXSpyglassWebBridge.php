@@ -81,7 +81,7 @@
             }
             else
             {
-                print ($linkToUpdate) ? $printed_output[0] + '<a href="/tbx-updater">Update this file to TBX v3</a>' : $printed_output[0];   
+                print ($linkToUpdate) ? $printed_output[0] . '<a href="/tbx-updater">Update this file to TBX v3</a>' : $printed_output[0];   
             }
             ?></p>
     </div>
