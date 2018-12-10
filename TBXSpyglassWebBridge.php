@@ -11,7 +11,8 @@
 
     // Define which version of Perl we will use
 
-    $perl = "~/.plenv/versions/5.18.0/bin/perl";
+    //$perl = "~/.plenv/versions/5.18.0/bin/perl";
+    $perl = "perl";  //Use this on production if you get an error
     $lib = "~/perl5/lib/perl5";
     $script = "./main.pl";
 
@@ -40,6 +41,8 @@
     }
 
     // If it did work, download a text file using the output stored in the $printed_output variable
+
+    $linkToUpdate = 0;
     else{
         if (preg_match("/2018 TBX/", $printed_output[0]))
         {
@@ -48,6 +51,7 @@
         else if (preg_match("/2008 TBX/", $printed_output[0]))
         {
             $image = "check_yellow.png";
+            $linkToUpdate = 1;
         }
     }
 ?>
@@ -81,6 +85,12 @@
                 print $printed_output[0];   
             }
             ?></p>
+		<? 
+			if ($linkToUpdate)
+			{
+				print '<p><a href="/tbx-updater">Update this file to TBX v3</a></p>')
+			}
+		?>
     </div>
 </body>
 </html>
