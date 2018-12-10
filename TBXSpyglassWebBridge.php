@@ -68,7 +68,7 @@
 
 <body>
     <div class="header">
-        <span>Go back in browser to return to TBX Spyglass utility.</span>
+        <span><a href="/tbx-spyglass">Return to Spyglass</a></span>
     </div>
     <h1 class="title">TBX Spyglass Results</h1>
     <p class="validation_notice">This app does *not* validate TBX files.</p>
