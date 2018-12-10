@@ -30,7 +30,8 @@
     
     $error = 0;
     $image = "x_red.png";
-
+	$linkToUpdate = 0;
+	
     //if $ret_val is not 0 or if the log file wasn't created, there was a problem
     if(($ret_val != 0) || (!file_exists($out_file_name)) ){
         #print problems
@@ -41,8 +42,6 @@
     }
 
     // If it did work, download a text file using the output stored in the $printed_output variable
-
-    $linkToUpdate = 0;
     else{
         if (preg_match("/2018 TBX/", $printed_output[0]))
         {
