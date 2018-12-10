@@ -87,7 +87,7 @@
 		<? 
 			if ($linkToUpdate)
 			{
-				print '<p><a href="/tbx-updater">Update this file to TBX v3</a></p>'
+				print '<p><a href="/tbx-updater">Update this file to TBX v3</a></p>';
 			}
 		?>
     </div>
