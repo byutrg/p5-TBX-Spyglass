@@ -18,7 +18,7 @@ sub main
         malformed_xml => "File does not appear to be well-formed XML.",
         malformed_tbx => "File appears to be well-formed XML, but does not appear to be TBX.",
         invalid_tbx => "File claims to be TBX, but does not appear valid.",
-        v2 => "File appears to be a 2008 TBX file.",
+        v2 => "File appears to be a 2008 TBX (v2) file.",
         bad_v3 => "File appears to be a 2019 TBX (v3) file, but has no valid dialect.",
         v3 => "File appears to be a 2019 TBX (v3) file with dialect:",
     );

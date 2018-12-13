@@ -7,7 +7,7 @@
     {
         echo "<p>Error: " . $_FILES["file"]["error"] . "</p>\n";
     }
-	$file_ext = end((explode('.', $_FILES['upload']['name'])));
+    $file_ext = end((explode('.', $_FILES['upload']['name'])));
 	
     $out_file_name = $temp_file_name . '.log';
 
@@ -22,10 +22,10 @@
 
     $command = "$perl ". "-I $lib " .
         escapeshellarg($script). ' ' .
-        escapeshellarg($temp_file_name) .
-			escapeshellarg($file_ext) .
-			' -s ' .
-            $reroute_stderr;
+        escapeshellarg($temp_file_name) . ' ' .
+        escapeshellarg($file_ext) .
+        ' -s ' .
+        $reroute_stderr;
 
     $ret_val = 0;
 
@@ -47,11 +47,11 @@
 
     // If it did work, download a text file using the output stored in the $printed_output variable
     else{
-        if (preg_match("/2018 TBX/", $printed_output[0]))
+        if (preg_match("/v3/", $printed_output[0]))
         {
             $image = "check_green.png";
         }
-        else if (preg_match("/2008 TBX/", $printed_output[0]))
+        else if (preg_match("/v2/", $printed_output[0]))
         {
             $image = "check_yellow.png";
             $linkToUpdate = 1;
