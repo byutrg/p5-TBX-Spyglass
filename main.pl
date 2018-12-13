@@ -5,7 +5,9 @@ use XML::Twig;
 
 sub main
 {
-    my ($file) = @_;
+    my ($file, $ext) = @_;
+	
+	$ext = $ext || '';
 	#THIS LINE DOES NOT WORK ON THE SERVER    
     #die "File does not have a '.tbx' extension.\n" if $_[0] !~ /\.tbx$/;
     
@@ -50,6 +52,8 @@ sub main
         }
     );
     
+	die $messages{'bad_ext'}."\n" unless $file =~ /\.(xml|tbxm?)$/i || $ext =~ /(xml|tbxm?)$/i;
+    
 	open(my $fh, '<', $file);
 	my $firstline;
 	
@@ -62,11 +66,10 @@ sub main
 		}
 	}
 	
-	
-	
-	die $messages{'bad_ext'}."\n" unless $file =~ /\.(xml|tbxm?)$/i;
-    die $messages{'malformed_xml'}."\n" unless $twig->safe_parsefile($file);
+	die $messages{'malformed_xml'}."\n" unless $twig->safe_parsefile($file);
 }
 
 die "Missing target file.\n" if (@ARGV < 1);
-main($ARGV[0]);
+
+#if on the server, extension will be fed to $ARGV[1]
+main(@ARGV);
