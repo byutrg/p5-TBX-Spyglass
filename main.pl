@@ -9,7 +9,7 @@ sub main
 	
 	$ext = $ext || '';
 	#THIS LINE DOES NOT WORK ON THE SERVER    
-    #die "File does not have a '.tbx' extension.\n" if $_[0] !~ /\.tbx$/;
+    #exit "File does not have a '.tbx' extension.\n" if $_[0] !~ /\.tbx$/;
     
     ## ordered by severity
     my %messages = (
@@ -52,7 +52,7 @@ sub main
         }
     );
     
-	die $messages{'bad_ext'}."\n" unless $file =~ /\.(xml|tbxm?)$/i || $ext =~ /(xml|tbxm?)$/i;
+	exit $messages{'bad_ext'}."\n" unless $file =~ /\.(xml|tbxm?)$/i || $ext =~ /(xml|tbxm?)$/i;
     
 	open(my $fh, '<', $file);
 	my $firstline;
@@ -61,15 +61,15 @@ sub main
 	{
 		if ($_ =~ /\w/g)
 		{
-			die $messages{'not_xml'} unless $_ =~ /<\?xml/i;
+			exit $messages{'not_xml'}."\n" unless $_ =~ /<\?xml/i;
 			last;
 		}
 	}
 	
-	die $messages{'malformed_xml'}."\n" unless $twig->safe_parsefile($file);
+	exit $messages{'malformed_xml'}."\n" unless $twig->safe_parsefile($file);
 }
 
-die "Missing target file.\n" if (@ARGV < 1);
+exit "Missing target file.\n" if (@ARGV < 1);
 
 #if on the server, extension will be fed to $ARGV[1]
 main(@ARGV);
