@@ -7,6 +7,8 @@
     {
         echo "<p>Error: " . $_FILES["file"]["error"] . "</p>\n";
     }
+	$file_ext = end((explode('.', $_FILES['upload']['name'])))
+	
     $out_file_name = $temp_file_name . '.log';
 
     // Define which version of Perl we will use
@@ -20,7 +22,9 @@
 
     $command = "$perl ". "-I $lib " .
         escapeshellarg($script). ' ' .
-        escapeshellarg($temp_file_name) . ' -s ' .
+        escapeshellarg($temp_file_name) .
+			escapeshellarg($file_ext)
+			' -s ' .
             $reroute_stderr;
 
     $ret_val = 0;
