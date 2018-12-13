@@ -61,7 +61,7 @@ sub main
 	{
 		if ($_ =~ /\w/g)
 		{
-			exit $messages{'not_xml'}."\n" unless $_ =~ /<\?xml/i;
+			die $messages{'not_xml'}."\n" unless $_ =~ /<\?xml/i;
 			last;
 		}
 	}
